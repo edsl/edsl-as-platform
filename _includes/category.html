@@ -1,0 +1,7 @@
+{% for category in page.category %}
+  <a href="{{ category | slugify }}.html"
+     title="{{ category }}">{{ category }}</a>
+  {% if category != page.category.last %}
+    /
+  {% endif %}
+{% endfor %}

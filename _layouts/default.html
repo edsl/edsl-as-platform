@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}" prefix="og: http://ogp.me">
+  <head>
+  <meta charset="utf-8" />
+    <title>{{ page.title }}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    {% include feed.html %}
+    {% include ogp.html %}
+    {% include opds.html %}
+	</head>
+  <body>
+    {{ content }}
+  </body>
+</html>

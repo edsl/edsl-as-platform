@@ -1,0 +1,13 @@
+<meta property="og:title" content="{{ page.title }}"/>
+<meta property="og:url" content="{{ site.canonical }}/{{ page.url }}"/>
+<meta property="og:locale" content="es_AR"/>
+<meta property="og:site_name" content="{{ site.title }}"/>
+<meta property="og:type" content="article"/>
+<meta property="og:article:published_time" content="{{ page.date }}"/>
+<meta property="og:article:author" content="{{ page.author }}"/>
+{% if page.cover %}
+<meta property="og:image" content="{{ site.canonical }}/{{ page.cover }}"/>
+{% else %}
+<meta property="og:image" content="{{ site.logo }}"/>
+{% endif %}
+

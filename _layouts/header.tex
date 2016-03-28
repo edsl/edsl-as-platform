@@ -1,0 +1,59 @@
+% This is the LaTeX header, use it to include changes to the default
+% Pandoc template.
+
+% Use \copyleft to inject a copyleft symbol (inverted copyright symbol)
+\newcommand{\copyleft}{\reflectbox{©}}
+
+% Some useful packages
+\usepackage{setspace}
+\usepackage{microtype}
+
+% Fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15.2pt}
+\fancyhead[]{}
+\fancyhead[LE]{\footnotesize{\leftmark}}
+\fancyhead[RO]{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+% Indent paragraphs
+\setlength{\parindent}{15pt}
+
+% Make URL break at any point, making long URLs respect the text box.
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+\do\Y\do\Z}
+
+% Hide image captions
+\usepackage[labelformat=empty]{caption}
+
+
+% This is a hack to make authors appear on the table of contents and
+% also as subheadings on chapter titles.
+%
+% Make article titles in this format:
+%
+% # Post title -- Author
+%
+% https://stackoverflow.com/a/1507530
+\usepackage{substr}
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}[hang]{}{}{0cm}{%
+  \Huge \BeforeSubString{ --- }{#1}\\
+  {\Large \itshape ---\BehindSubString{ --- }{#1}---}%
+}
+
+% Another hack, prevent pandoc from setting the bibliography section
+% title as the previous chapter title.
+%
+% https://tex.stackexchange.com/a/233271
+% https://github.com/jgm/pandoc/issues/1632
+\titleformat{name=\chapter,numberless}[hang]{}{}{0cm}{%
+  \Huge #1\markboth{#1}{#1}%
+}

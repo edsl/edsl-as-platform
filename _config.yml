@@ -1,0 +1,59 @@
+# Site's metadata
+logo:
+title:
+tagline:
+author:
+email:
+lang:
+
+# Enable pandoc processing of HTML articles
+markdown: pandoc
+
+# Configuration for publishing in different formats
+pandoc:
+# Toggle to true if you want to skip publishing
+  skip: false
+# The permalink for bundled articles.  Bundled articles are posts under
+# the same category that produce a single document containing them all
+# as a collection.
+  bundle_permalink: ':slug.:output_ext'
+# Page size (between a7 and a0)
+  papersize: 'a5paper'
+# Printing size (between a7 and a0)
+  sheetsize: 'a4paper'
+# Printing layout for sewed binding, booklets and zines
+  imposition: true
+# Printing layout for thermal/glue binding
+  binder: true
+
+# These flags are applied to every format, including HTML
+  flags: '--csl=apa.csl --bibliography=ref.bib --smart -V lang=es
+          --section-divs --email-obfuscation=references'
+# Flags applied only to HTML
+  site_flags: '--toc --template=_layouts/toc.html'
+# Formats and their specific flags
+  outputs:
+    pdf: '-V fontsize=10pt,twoside
+          -V documentclass=book
+          -V geometry=hcentering
+          -V geometry=bindingoffset=1cm
+          -V links-as-notes=true
+          -V subparagraph
+          --latex-engine=xelatex
+          --table-of-contents
+          --include-in-header=_layouts/header.tex
+          --include-before-body=_layouts/license.tex'
+    epub: '-V lang=es --epub-chapter-level=2'
+
+# Create pages grouping them by category, same as producing bundled
+# documents.
+jekyll-archives:
+  enabled:
+    - categories
+  permalinks:
+    category: :name.html
+
+# Generate a torrent file for distributing your site!
+# You need to install mktorrent first
+torrent:
+  file: site.torrent
